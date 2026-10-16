@@ -433,10 +433,6 @@ h2 em {
   border-right: 1px solid rgb(26 26 26 / 30%);
 }
 
-.technical-list article:nth-last-child(-n + 2) {
-  grid-column: span 3;
-}
-
 .technical-list article > span {
   color: var(--cream);
   font: 15px 'DM Mono', monospace;
@@ -506,10 +502,6 @@ h2 em {
   position: relative;
   border-bottom: 1px solid rgb(247 237 227 / 20%);
   border-right: 1px solid rgb(247 237 227 / 20%);
-}
-
-.capability-list article:nth-last-child(-n + 2) {
-  grid-column: span 3;
 }
 
 .capability-number {
@@ -1448,4 +1440,53 @@ footer > p {
   .reveal { animation: none; }
   .hero-visual > img,
   .button { transition: none; }
+}
+
+/* Access gate (temporary, pre-launch) */
+.gate {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--cream);
+}
+
+.gate form {
+  width: min(360px, 100%);
+  display: grid;
+  gap: 14px;
+}
+
+.gate img {
+  width: 180px;
+  margin-bottom: 14px;
+}
+
+.gate label {
+  font: 12px 'DM Mono', monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.gate input {
+  font: 16px 'DM Sans', sans-serif;
+  padding: 13px 14px;
+  border: 1px solid rgb(26 26 26 / 40%);
+  background: transparent;
+  color: var(--ink);
+}
+
+.gate button {
+  font: 500 15px 'DM Sans', sans-serif;
+  padding: 13px 14px;
+  border: 0;
+  background: var(--ink);
+  color: var(--cream);
+  cursor: pointer;
+}
+
+.gate-error {
+  margin: 0;
+  font-size: 13px;
+  color: #b3403e;
 }

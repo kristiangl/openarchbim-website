@@ -48,6 +48,11 @@ const capabilities = [
     title: 'Purpose-built 2D drafting',
     text: 'Create details and drafting views with the precision tools you expect from professional BIM software.',
   },
+  {
+    number: '06',
+    title: 'Bring existing projects',
+    text: 'Open .rvt project files and carry on working, without rebuilding your models from scratch.',
+  },
 ]
 
 const technicalDetails = [
@@ -56,6 +61,7 @@ const technicalDetails = [
   ['03', 'Truly native', 'No web view. No wrapped browser. A responsive desktop application built for your OS.'],
   ['04', 'Immediately familiar', 'A clear, proven BIM layout so experienced teams can start working right away.'],
   ['05', 'Local by default', 'Runs entirely on your machine. No mandatory account, cloud, or internet connection.'],
+  ['06', 'Open standards', 'IFC support and a documented project format, so your data outlives any single tool.'],
 ]
 
 function InterfacePreview({ sheet = false }: { sheet?: boolean }) {
@@ -283,8 +289,12 @@ export default function App() {
           <a href="#top">Back to top ↑</a>
         </div>
         <div className="footer-bottom">
-          <span>© 2025 OpenArch BIM</span>
+          <span>© 2026 OpenArch BIM</span>
           <span>Released under GNU GPL v3.0</span>
+          <span>
+            Photography via{' '}
+            <a href="https://unsplash.com" target="_blank" rel="noreferrer">Unsplash</a>
+          </span>
         </div>
       </footer>
     </main>
