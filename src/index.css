@@ -63,7 +63,7 @@ a {
 nav {
   display: flex;
   gap: 42px;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 nav a,
@@ -81,7 +81,7 @@ nav a:hover,
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -119,7 +119,7 @@ nav a:hover,
   align-items: center;
   gap: 13px;
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.17em;
   text-transform: uppercase;
@@ -132,7 +132,7 @@ nav a:hover,
 }
 
 .hero h1 {
-  font-size: clamp(72px, 8vw, 132px);
+  font-size: clamp(56px, 6vw, 100px);
   line-height: 0.82;
   letter-spacing: -0.065em;
   font-weight: 400;
@@ -168,7 +168,7 @@ h2 em {
   align-items: center;
   justify-content: center;
   gap: 28px;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.04em;
   transition: transform 180ms ease, background-color 180ms ease;
@@ -188,7 +188,7 @@ h2 em {
   align-items: center;
   gap: 11px;
   padding-bottom: 5px;
-  font-size: 13px;
+  font-size: 15px;
   border-bottom: 1px solid var(--ink);
 }
 
@@ -197,7 +197,7 @@ h2 em {
   align-items: center;
   gap: 9px;
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
+  font-size: 13px;
   margin-top: 48px;
   letter-spacing: 0.03em;
   opacity: 0.58;
@@ -253,13 +253,13 @@ h2 em {
 .visual-label span {
   font-family: 'DM Mono', monospace;
   text-transform: uppercase;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.15em;
   margin-bottom: 8px;
 }
 
 .visual-label strong {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -277,7 +277,7 @@ h2 em {
 .drawing-card > span,
 .drawing-card small {
   font-family: 'DM Mono', monospace;
-  font-size: 7px;
+  font-size: 10px;
   letter-spacing: 0.08em;
 }
 
@@ -304,7 +304,7 @@ h2 em {
   transform: rotate(-90deg);
   transform-origin: left center;
   font-family: 'DM Mono', monospace;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -448,7 +448,7 @@ h2 em {
 
 .technical-list p {
   margin: 18px 0 0;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.65;
   font-weight: 300;
 }
@@ -517,7 +517,7 @@ h2 em {
 }
 
 .capability-list p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.65;
   font-weight: 300;
   color: rgb(247 237 227 / 55%);
@@ -757,7 +757,7 @@ h2 em {
 }
 
 .screen-caption span {
-  font: 9px 'DM Mono', monospace;
+  font: 12px 'DM Mono', monospace;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
@@ -765,7 +765,7 @@ h2 em {
 .screen-caption p {
   max-width: 430px;
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -988,13 +988,13 @@ h2 em {
 .platform-downloads small {
   margin-top: 4px;
   color: rgb(247 237 227 / 45%);
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .platform-downloads i {
   grid-column: 2;
   color: var(--coral);
-  font: normal 8px 'DM Mono', monospace;
+  font: normal 11px 'DM Mono', monospace;
   text-transform: uppercase;
 }
 
@@ -1012,7 +1012,7 @@ h2 em {
   z-index: 1;
   color: rgb(247 237 227 / 55%);
   border-bottom: 1px solid rgb(247 237 227 / 20%);
-  font: 9px 'DM Mono', monospace;
+  font: 13px 'DM Mono', monospace;
   letter-spacing: .03em;
 }
 
@@ -1097,7 +1097,7 @@ footer {
 
 footer > p {
   text-align: center;
-  font-size: 10px;
+  font-size: 14px;
   opacity: 0.45;
 }
 
@@ -1105,7 +1105,7 @@ footer > p {
   display: flex;
   justify-content: flex-end;
   gap: 22px;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .footer-bottom {
@@ -1116,7 +1116,7 @@ footer > p {
   margin-top: 30px;
   border-top: 1px solid rgb(247 237 227 / 10%);
   color: rgb(247 237 227 / 35%);
-  font: 8px 'DM Mono', monospace;
+  font: 11px 'DM Mono', monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1489,4 +1489,114 @@ footer > p {
   margin: 0;
   font-size: 13px;
   color: #b3403e;
+}
+
+/* Motion (all of it is disabled under prefers-reduced-motion below) */
+.status-dot {
+  position: relative;
+  flex: none;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--sage);
+  animation: dot-pulse 2.6s ease-out infinite;
+}
+
+@keyframes dot-pulse {
+  0% { transform: scale(1); opacity: 0.55; }
+  70%, 100% { transform: scale(3.2); opacity: 0; }
+}
+
+.scroll-line {
+  transform-origin: left center;
+  animation: line-breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes line-breathe {
+  0%, 100% { transform: scaleX(0.45); }
+  50% { transform: scaleX(1); }
+}
+
+.js-reveal [data-reveal]:not(.in-view) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.js-reveal [data-reveal] {
+  transition: opacity 700ms ease var(--reveal-delay, 0ms),
+    transform 700ms cubic-bezier(.2, .7, .2, 1) var(--reveal-delay, 0ms);
+}
+
+.hero-visual > img {
+  translate: var(--tilt-x, 0px) calc(var(--parallax, 0px) + var(--tilt-y, 0px));
+  scale: 1.06;
+  transition: transform 1s cubic-bezier(.2, .7, .2, 1), translate 400ms ease-out;
+}
+
+.drawing-card {
+  translate: calc(var(--tilt-x, 0px) * -1.4) calc(var(--tilt-y, 0px) * -1.4);
+  transition: translate 400ms ease-out;
+}
+
+.technical-list article,
+.capability-list article {
+  position: relative;
+  isolation: isolate;
+}
+
+.technical-list article::before,
+.capability-list article::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgb(247 237 227 / 22%), transparent 70%);
+  pointer-events: none;
+}
+
+.capability-list article::before {
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgb(132 166 157 / 20%), transparent 70%);
+}
+
+.technical-list article:hover::before,
+.capability-list article:hover::before {
+  opacity: 1;
+}
+
+.capability-arrow {
+  transition: transform 250ms ease;
+}
+
+.capability-list article:hover .capability-arrow {
+  transform: translate(3px, -3px);
+}
+
+.button svg,
+.text-link svg,
+.header-cta svg {
+  transition: transform 200ms ease;
+}
+
+.button:hover svg {
+  transform: translateX(4px);
+}
+
+.text-link:hover svg,
+.header-cta:hover svg {
+  transform: translate(2px, -2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot::after,
+  .scroll-line { animation: none; }
+  .status-dot::after { opacity: 0; }
+  .hero-visual > img,
+  .drawing-card { translate: none; transition: none; }
+  .js-reveal [data-reveal]:not(.in-view) { opacity: 1; transform: none; }
 }

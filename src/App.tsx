@@ -1,3 +1,5 @@
+import { useMotion } from './motion'
+
 const heroImage =
   'https://images.unsplash.com/photo-1614595737476-42487331b8a1?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=86&w=1800'
 
@@ -26,42 +28,42 @@ const capabilities = [
   {
     number: '01',
     title: 'Parametric by default',
-    text: 'Drive dimensions, relationships, and geometry with parameters that stay editable throughout the project.',
+    text: 'Drive dimensions and relationships with parameters you can edit at any point in the project.',
   },
   {
     number: '02',
     title: 'Build custom families',
-    text: 'Create reusable, intelligent building components without leaving the application or learning another tool.',
+    text: 'Make your own reusable building components inside the app, with no separate tool to learn.',
   },
   {
     number: '03',
     title: 'Schedules with real logic',
-    text: 'Build schedules with custom properties, formulas, calculated values, grouping, and live model updates.',
+    text: 'Schedules with custom properties, formulas, calculated values and grouping that update live with the model.',
   },
   {
     number: '04',
     title: 'Legends that work',
-    text: 'Place live components in legends and control their representation without brittle workarounds.',
+    text: 'Place live components in legends and control how they are drawn, with no workarounds.',
   },
   {
     number: '05',
     title: 'Purpose-built 2D drafting',
-    text: 'Create details and drafting views with the precision tools you expect from professional BIM software.',
+    text: 'Proper drafting tools for details and drafting views, with the precision you expect.',
   },
   {
     number: '06',
     title: 'Bring existing projects',
-    text: 'Open .rvt project files and carry on working, without rebuilding your models from scratch.',
+    text: 'Open .rvt project files and carry on working without rebuilding your models.',
   },
 ]
 
 const technicalDetails = [
-  ['01', 'Built in Rust', 'Fast, memory-safe, and engineered for projects that grow in complexity.'],
-  ['02', 'Open source', 'Inspect the code, shape the roadmap, and keep your project data in your hands.'],
-  ['03', 'Truly native', 'No web view. No wrapped browser. A responsive desktop application built for your OS.'],
-  ['04', 'Immediately familiar', 'A clear, proven BIM layout so experienced teams can start working right away.'],
-  ['05', 'Local by default', 'Runs entirely on your machine. No mandatory account, cloud, or internet connection.'],
-  ['06', 'Open standards', 'IFC support and a documented project format, so your data outlives any single tool.'],
+  ['01', 'Built in Rust', 'Fast and memory-safe, so large projects stay responsive.'],
+  ['02', 'Free and open source', 'No licence fees or subscriptions. Read the code, suggest changes, and keep your data.'],
+  ['03', 'Truly native', 'A real desktop app for your OS, not a web page in a wrapper.'],
+  ['04', 'Familiar layout', 'A standard BIM layout, so experienced users can start straight away.'],
+  ['05', 'Local by default', 'Runs on your machine. No account, no cloud, no internet needed.'],
+  ['06', 'Open standards', 'IFC support and a documented project format, so your files are never locked in.'],
 ]
 
 function InterfacePreview({ sheet = false }: { sheet?: boolean }) {
@@ -116,6 +118,7 @@ function InterfacePreview({ sheet = false }: { sheet?: boolean }) {
 }
 
 export default function App() {
+  useMotion()
   return (
     <main className="overflow-hidden">
       <header className="site-header">
@@ -130,7 +133,7 @@ export default function App() {
         </nav>
 
         <a className="header-cta" href="#download">
-          Get OpenArch <ArrowIcon diagonal />
+          Download free <ArrowIcon diagonal />
         </a>
       </header>
 
@@ -138,28 +141,29 @@ export default function App() {
         <div className="hero-copy">
           <div className="eyebrow reveal">
             <span className="eyebrow-line" />
-            Open source building design
+            Free and open source BIM
           </div>
           <h1 className="reveal reveal-delay-1">
-            Architecture,
+            BIM software,
             <br />
-            <em>built openly.</em>
+            <em>completely free.</em>
           </h1>
           <p className="hero-intro reveal reveal-delay-2">
-            A professional BIM platform shaped by architects, engineers, and
-            makers. Powerful by design. Open by nature.
+            OpenArch BIM is a free, open source program for designing and
+            documenting buildings. No subscription, no account, and it runs on
+            Windows, macOS and Linux.
           </p>
           <div className="hero-actions reveal reveal-delay-3">
             <a className="button button-dark" href="#download">
               Download for free <ArrowIcon />
             </a>
             <a className="text-link" href="#features">
-              Explore the platform <ArrowIcon diagonal />
+              See what it can do <ArrowIcon diagonal />
             </a>
           </div>
           <div className="version-note reveal reveal-delay-3">
             <span className="status-dot" />
-            Version 1.4 available · macOS, Windows & Linux
+            Free · Version 1.4 · Windows, macOS & Linux
           </div>
         </div>
 
@@ -190,9 +194,9 @@ export default function App() {
 
       <section className="technical" id="technical">
         <div className="technical-intro">
-          <p className="section-kicker">A solid foundation</p>
-          <h2>Modern under<br />the <em>surface.</em></h2>
-          <p>OpenArch is built from the ground up to be fast, private, extensible, and dependable—without legacy baggage.</p>
+          <p className="section-kicker">Under the hood</p>
+          <h2>Modern tech,<br />no <em>baggage.</em></h2>
+          <p>OpenArch is written from scratch to be fast, private and easy to extend, with no legacy code holding it back.</p>
         </div>
         <div className="technical-list">
           {technicalDetails.map(([number, title, text]) => (
@@ -207,11 +211,11 @@ export default function App() {
 
       <section className="features" id="features">
         <div className="section-heading">
-          <p className="section-kicker light">BIM, without the friction</p>
-          <h2>The details<br />done <em>right.</em></h2>
+          <p className="section-kicker light">What it does</p>
+          <h2>The tools you<br />actually <em>use.</em></h2>
           <p>
-            Familiar tools, rebuilt around the way architects actually work.
-            Every feature stays connected to the model and under your control.
+            Familiar BIM tools, with every feature tied to the model so a
+            change in one place updates everywhere.
           </p>
         </div>
         <div className="capability-list">
@@ -231,18 +235,18 @@ export default function App() {
       <section className="screenshots" id="screenshots">
         <div className="screenshots-heading">
           <div>
-            <p className="section-kicker">Inside OpenArch</p>
-            <h2>A workspace that<br />gets out of the way.</h2>
+            <p className="section-kicker">Screenshots</p>
+            <h2>A workspace built<br />for getting <em>work done.</em></h2>
           </div>
-          <p>Purpose-built for focus, with the tools you need close at hand and the model always at the centre.</p>
+          <p>The tools you need are close at hand and the model stays front and centre.</p>
         </div>
         <div className="screen screen-primary">
           <InterfacePreview />
-          <div className="screen-caption"><span>01 / 3D modelling</span><p>Model, inspect, and edit building elements in one responsive view.</p></div>
+          <div className="screen-caption"><span>01 / 3D modelling</span><p>Model, inspect and edit building elements in one view.</p></div>
         </div>
         <div className="screen screen-secondary">
           <InterfacePreview sheet />
-          <div className="screen-caption"><span>02 / Documentation</span><p>Compose coordinated sheets directly from live project views.</p></div>
+          <div className="screen-caption"><span>02 / Documentation</span><p>Build sheets straight from live project views.</p></div>
         </div>
       </section>
 
@@ -250,9 +254,9 @@ export default function App() {
         <div className="download-mark">
           <img src="/brand/openarch-mark-cloud.svg" alt="" />
         </div>
-        <p className="section-kicker light">Get the app</p>
-        <h2>Start building<br /><em>open.</em></h2>
-        <p>Free to use. No account required. Choose your platform.</p>
+        <p className="section-kicker light">Download</p>
+        <h2>Download it.<br /><em>It's free.</em></h2>
+        <p>Free to use, with no account and no subscription. Pick your platform.</p>
         <div className="platform-downloads">
           {[
             ['Windows', 'Windows 10 or later', 'x64'],
@@ -280,7 +284,7 @@ export default function App() {
         <a className="brand footer-brand" href="#top" aria-label="OpenArch BIM home">
           <img src="/brand/openarch-logo-reversed.svg" alt="OpenArch BIM" />
         </a>
-        <p>Open tools for an open built environment.</p>
+        <p>Free, open source BIM software.</p>
         <div className="footer-links">
           <a href="#features">Features</a>
           <a href="#technical">Technical</a>
