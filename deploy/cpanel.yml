@@ -1,9 +1,0 @@
----
-deployment:
-  tasks:
-    # Document root for openarchbim.com. Change if the domain uses a different folder.
-    - export DEPLOYPATH=/home/seeshell/public_html/
-    - /bin/mkdir -p $DEPLOYPATH
-    - /bin/rsync -a --exclude=.git --exclude=.cpanel.yml --exclude=assets ./ $DEPLOYPATH
-    # Hashed assets change every build, so mirror this folder exactly.
-    - /bin/rsync -a --delete ./assets/ $DEPLOYPATH/assets/

@@ -10,11 +10,16 @@ pnpm build    # output in dist/
 
 ## Deployment
 
-1. Push to `main`.
-2. GitHub Actions (`.github/workflows/deploy.yml`) builds the site and force-pushes the
-   output to the `deploy` branch.
-3. The web host pulls the `deploy` branch and `deploy/cpanel.yml` (published as
-   `.cpanel.yml`) copies the files into the site's document root.
+Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and uploads
+`dist/` to the web host over FTPS.
+
+Repository secrets (Settings → Secrets and variables → Actions):
+
+- `FTP_SERVER`: FTP hostname
+- `FTP_USERNAME`
+- `FTP_PASSWORD`
+
+Optional repository variable `FTP_DIR`: target folder on the host (default `public_html/`).
 
 ## Pre-launch checklist
 

@@ -1,22 +1,19 @@
-name: Build and publish
+name: Build and deploy
 
-# On every push to main, build the site and publish the result to the
-# `deploy` branch. The web host pulls that branch and copies it into place
-# (see deploy/cpanel.yml and README.md).
+# On every push to main, build the site and upload it to the web host over FTPS.
+# Needs repository secrets FTP_SERVER, FTP_USERNAME and FTP_PASSWORD.
+# Optional repository variable FTP_DIR sets the target folder (default: public_html/).
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 concurrency:
   group: deploy
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -33,14 +30,12 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
 
-      - name: Publish dist to deploy branch
-        run: |
-          cp deploy/cpanel.yml dist/.cpanel.yml
-          cp public/.htaccess dist/.htaccess
-          cd dist
-          git init -q -b deploy
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -q -m "Build ${GITHUB_SHA::7}"
-          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" deploy
+      - name: Upload to web host
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ${{ vars.FTP_DIR || 'public_html/' }}
