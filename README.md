@@ -19,7 +19,7 @@ Repository secrets (Settings → Secrets and variables → Actions):
 - `FTP_USERNAME`
 - `FTP_PASSWORD`
 
-Optional repository variable `FTP_DIR`: target folder on the host (default `public_html/`).
+Optional secret or variable `FTP_DIR`: target folder on the host (default `public_html/`).
 
 ## Pre-launch checklist
 

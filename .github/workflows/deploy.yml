@@ -2,7 +2,7 @@ name: Build and deploy
 
 # On every push to main, build the site and upload it to the web host over FTPS.
 # Needs repository secrets FTP_SERVER, FTP_USERNAME and FTP_PASSWORD.
-# Optional repository variable FTP_DIR sets the target folder (default: public_html/).
+# Optional secret or variable FTP_DIR sets the target folder (default: public_html/).
 on:
   push:
     branches: [main]
@@ -38,4 +38,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           local-dir: ./dist/
-          server-dir: ${{ vars.FTP_DIR || 'public_html/' }}
+          server-dir: ${{ secrets.FTP_DIR || vars.FTP_DIR || 'public_html/' }}
