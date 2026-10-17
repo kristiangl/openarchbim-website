@@ -108,9 +108,11 @@ nav a:hover,
 }
 
 .hero-copy {
-  padding: clamp(80px, 10vh, 130px) 7vw 100px max(24px, 8vw);
+  padding: clamp(80px, 10vh, 130px) 7vw 0 max(24px, 8vw);
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .eyebrow,
@@ -1148,8 +1150,9 @@ footer > p {
   }
 
   .hero-copy {
-    padding: 80px 24px 70px;
+    padding: 80px 24px 0;
   }
+
 
   .hero h1 {
     font-size: clamp(62px, 16vw, 105px);
@@ -1625,4 +1628,53 @@ footer > p {
 
 .capability-number {
   padding-bottom: 28px;
+}
+
+/* Large brandmark filling the empty space under the hero text.
+   Sized from the space available (cqh), bleeding off the left and bottom edges. */
+.hero-mark {
+  flex: 1 1 auto;
+  min-height: 150px;
+  margin: 48px 0 0 calc(-1 * max(24px, 8vw));
+  width: calc(100% + max(24px, 8vw));
+  position: relative;
+  overflow: clip;
+  container-type: size;
+  pointer-events: none;
+}
+
+.hero-mark img {
+  position: absolute;
+  top: 0;
+  height: 150cqh;
+  width: auto;
+  max-width: none;
+  /* right edge of the arch sits at 18% of the viewport width */
+  left: calc(18vw - 150cqh * 0.7413);
+  animation: mark-rise 1100ms cubic-bezier(.2, .7, .2, 1) 250ms both;
+}
+
+@keyframes mark-rise {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mark img { animation: none; }
+}
+
+@media (max-width: 900px) {
+  .hero-mark {
+    flex: none;
+    height: 240px;
+    min-height: 0;
+    margin: 36px 0 0 -24px;
+    width: calc(100% + 24px);
+    container-type: normal;
+  }
+
+  .hero-mark img {
+    height: 360px;
+    left: calc(32vw - 360px * 0.7413);
+  }
 }

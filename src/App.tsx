@@ -243,6 +243,9 @@ export default function App() {
             <span className="status-dot" />
             Free · Version 1.4 · Windows, macOS & Linux
           </div>
+          <div className="hero-mark" aria-hidden="true">
+            <img src="/brand/openarch-mark-graphite.svg" alt="" />
+          </div>
         </div>
 
         <div className="hero-visual reveal reveal-delay-2">
