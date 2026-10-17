@@ -495,7 +495,7 @@ h2 em {
 
 .capability-list article {
   grid-column: span 2;
-  min-height: 265px;
+  min-height: 360px;
   display: flex;
   flex-direction: column;
   padding: 28px;
@@ -1599,4 +1599,30 @@ footer > p {
   .hero-visual > img,
   .drawing-card { translate: none; transition: none; }
   .js-reveal [data-reveal]:not(.in-view) { opacity: 1; transform: none; }
+}
+
+/* Feature card icons */
+.capability-icon {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 24px;
+  color: rgb(247 237 227 / 85%);
+  transition: transform 250ms ease;
+}
+
+.capability-icon .accent {
+  stroke: var(--coral);
+}
+
+.capability-list article:hover .capability-icon {
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capability-icon { transition: none; }
+}
+
+.capability-number {
+  padding-bottom: 28px;
 }

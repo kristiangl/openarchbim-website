@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { useMotion } from './motion'
 
 const heroImage =
@@ -24,6 +25,83 @@ function ArrowIcon({ diagonal = false }: { diagonal?: boolean }) {
   )
 }
 
+// Line icons for the feature cards. 64x64 grid, drawn with the current text
+// colour; elements with the "accent" class pick up the brand accent colour.
+const capabilityIcons: Record<string, ReactNode> = {
+  // Dimension line over a wall
+  '01': (
+    <>
+      <path d="M10 10v20M54 10v20" />
+      <path className="accent" d="M10 17h44M6 21l8-8M50 21l8-8" />
+      <rect x="10" y="30" width="44" height="22" />
+      <path d="M10 41h44" />
+    </>
+  ),
+  // Armchair
+  '02': (
+    <>
+      <path d="M20 26v-8a4 4 0 0 1 4-4h16a4 4 0 0 1 4 4v8" />
+      <rect x="10" y="26" width="8" height="18" rx="3" />
+      <rect x="46" y="26" width="8" height="18" rx="3" />
+      <rect className="accent" x="18" y="32" width="28" height="12" rx="2" />
+      <path d="M16 44v7M48 44v7" />
+    </>
+  ),
+  // Schedule table
+  '03': (
+    <>
+      <rect x="8" y="12" width="48" height="40" />
+      <path className="accent" d="M8 22h48" />
+      <path d="M8 32h48M8 42h48M26 12v40M42 12v40" />
+    </>
+  ),
+  // Legend with symbols
+  '04': (
+    <>
+      <rect x="10" y="8" width="44" height="48" rx="2" />
+      <rect x="16" y="16" width="8" height="8" />
+      <path d="M30 20h18M30 32h18M30 44h18" />
+      <circle className="accent" cx="20" cy="32" r="4" />
+      <path d="M16 48h8v-8M16 48a8 8 0 0 0 8-8" />
+    </>
+  ),
+  // Set square and pencil
+  '05': (
+    <>
+      <path d="M12 52V12l40 40z" />
+      <path className="accent" d="M20 44V30l14 14z" />
+      <path d="M20 52v-4M28 52v-3M36 52v-4M44 52v-3" />
+      <path d="M36 30l2-8 14-14 6 6-14 14z" />
+      <path d="M38 22l6 6" />
+    </>
+  ),
+  // File coming in
+  '06': (
+    <>
+      <path d="M18 8h22l12 12v36H18z" />
+      <path d="M40 8v12h12" />
+      <path className="accent" d="M4 38h26M24 32l6 6-6 6" />
+    </>
+  ),
+}
+
+function CapabilityIcon({ id }: { id: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className="capability-icon"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinejoin="round"
+      strokeLinecap="round"
+      viewBox="0 0 64 64"
+    >
+      {capabilityIcons[id]}
+    </svg>
+  )
+}
+
 const capabilities = [
   {
     number: '01',
@@ -38,7 +116,7 @@ const capabilities = [
   {
     number: '03',
     title: 'Schedules with real logic',
-    text: 'Schedules with custom properties, formulas, calculated values and grouping that update live with the model.',
+    text: 'Custom properties, formulas and grouping that update live with the model.',
   },
   {
     number: '04',
@@ -223,6 +301,7 @@ export default function App() {
             <article key={item.number}>
               <span className="capability-number">{item.number}</span>
               <div>
+                <CapabilityIcon id={item.number} />
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </div>
