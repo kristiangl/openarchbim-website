@@ -438,12 +438,12 @@ export default function App() {
           <div className="hero-actions reveal reveal-delay-3">
             {comingSoon ? (
               <>
-                <ExternalLink className="button button-dark" href={SUPPORT_URL}>
-                  Buy me a coffee <ArrowIcon />
-                </ExternalLink>
-                <ExternalLink className="text-link" href={GITHUB_URL}>
+                <ExternalLink className="button button-dark" href={GITHUB_URL}>
                   View on GitHub <ArrowIcon diagonal />
                 </ExternalLink>
+                <a className="text-link" href="#story">
+                  Read the story <ArrowIcon />
+                </a>
               </>
             ) : (
               <>
