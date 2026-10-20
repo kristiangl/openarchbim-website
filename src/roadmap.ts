@@ -1,0 +1,49 @@
+// Roadmap shown on the coming-soon page. Plain language, no dates.
+export const roadmap = [
+  {
+    id: 'built',
+    label: 'Built',
+    blurb: 'Working in the app today.',
+    items: [
+      'Layered walls, including curved walls and joins that follow the layers',
+      'Floors and roofs drawn by sketching, with slopes, hips and gables',
+      'Doors and windows with Australian frame types',
+      'Levels, grids, plans, elevations and first section views',
+      'Dimensions, spot elevations and annotations',
+      'Move, copy, rotate, mirror, offset, trim and align',
+      'Schedules with formulas and calculated columns',
+      'Line weights, patterns, materials and view templates',
+      'Component families and the first version of the family editor',
+      'A GPU-accelerated 3D view, with undo and redo throughout',
+    ],
+  },
+  {
+    id: 'next',
+    label: 'Up next',
+    blurb: 'What I am working on now.',
+    items: [
+      'Section views: jogged and split sections, depth cueing, sheet numbers',
+      'Family editor: sweeps, blends, revolves, nested families, lookup tables',
+      'Ceilings, and roofs by extrusion and by face',
+      'Roof soffits, fascias and gutters',
+      'Dimensions and spot levels in elevation and section views',
+      'Door and window tags',
+      'Mac testing and proper installers',
+    ],
+  },
+  {
+    id: 'planned',
+    label: 'Planned',
+    blurb: 'Coming after that.',
+    items: [
+      'Stairs, ramps, railings, columns and beams',
+      'Sheets, title blocks, revisions, PDF and DXF export',
+      'Legends and 2D drafting views',
+      'IFC import and export',
+      'Linked models that scale to large masterplans',
+      'Site tools: toposurface, building pads, cut and fill',
+      'A converter for projects from other BIM software',
+      'Sun path, shadows and render export',
+    ],
+  },
+]

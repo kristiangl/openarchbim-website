@@ -9,6 +9,8 @@ const REVEAL_SELECTORS = [
   '.capability-list article',
   '.screenshots-heading',
   '.screen',
+  '.story-copy, .support-card',
+  '.roadmap-heading, .roadmap-column, .roadmap-cta',
   '.download-mark, .download > p, .download h2, .platform-downloads a, .release-info',
 ]
 

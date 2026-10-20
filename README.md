@@ -27,3 +27,12 @@ Optional secret or variable `FTP_DIR`: target folder on the host (default `publi
 - Allow indexing: delete the `robots` meta tag in `index.html` and `public/robots.txt`.
 - Replace placeholder screenshots, release/download/roadmap links and the GitHub link.
 - Add the photographer's name to the Unsplash credit in the footer.
+
+## Site mode
+
+`src/config.ts` has a `SITE_MODE` switch.
+
+- `coming-soon`: story, support links, real screenshots and roadmap (current).
+- `launch`: the full launch layout with download links.
+
+Roadmap content lives in `src/roadmap.ts`. Links to GitHub and Buy Me a Coffee are in `src/config.ts`.

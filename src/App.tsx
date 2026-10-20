@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
 import { useMotion } from './motion'
+import { GITHUB_URL, SITE_MODE, SUPPORT_URL } from './config'
+import { roadmap } from './roadmap'
 
 const heroImage =
   'https://images.unsplash.com/photo-1614595737476-42487331b8a1?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=86&w=1800'
@@ -102,6 +104,8 @@ function CapabilityIcon({ id }: { id: string }) {
   )
 }
 
+const comingSoon = SITE_MODE === 'coming-soon'
+
 const capabilities = [
   {
     number: '01',
@@ -131,67 +135,250 @@ const capabilities = [
   {
     number: '06',
     title: 'Bring existing projects',
-    text: 'Open .rvt project files and carry on working without rebuilding your models.',
+    text: comingSoon
+      ? 'Bring in projects from other BIM software through IFC and a converter, so you do not start from scratch.'
+      : 'Open .rvt project files and carry on working without rebuilding your models.',
   },
 ]
 
 const technicalDetails = [
   ['01', 'Built in Rust', 'Fast and memory-safe, so large projects stay responsive.'],
   ['02', 'Free and open source', 'No licence fees or subscriptions. Read the code, suggest changes, and keep your data.'],
-  ['03', 'Truly native', 'A real desktop app for your OS, not a web page in a wrapper.'],
+  ['03', 'Desktop app', 'Installs and runs on your computer like any other program, with a GPU-accelerated 3D view.'],
   ['04', 'Familiar layout', 'A standard BIM layout, so experienced users can start straight away.'],
   ['05', 'Local by default', 'Runs on your machine. No account, no cloud, no internet needed.'],
-  ['06', 'Open standards', 'IFC support and a documented project format, so your files are never locked in.'],
+  [
+    '06',
+    'Open standards',
+    comingSoon
+      ? 'Designed around IFC, with an open project file you can inspect yourself.'
+      : 'IFC support and a documented project format, so your files are never locked in.',
+  ],
 ]
 
-function InterfacePreview({ sheet = false }: { sheet?: boolean }) {
+const screens = [
+  {
+    className: 'screen-primary',
+    src: '/screenshots/3d-view.png',
+    alt: 'OpenArch BIM showing a 3D view of a small building with a hip roof, door and window',
+    label: '01 / 3D view',
+    text: 'Layered walls, doors, windows and a hip roof, shown in 3D.',
+  },
+  {
+    className: 'screen-secondary',
+    src: '/screenshots/floor-plan.png',
+    alt: 'OpenArch BIM showing a floor plan with grids, dimensions, a door and a section line',
+    label: '02 / Floor plan',
+    text: 'Plans with grids, levels, dimensions and section markers.',
+  },
+  {
+    className: 'screen-tertiary',
+    src: '/screenshots/elevation.png',
+    alt: 'OpenArch BIM showing a south elevation with levels, grids, a door and a window',
+    label: '03 / Elevation',
+    text: 'Elevations drawn from the model, with levels and grids you can drag.',
+  },
+]
+
+function ExternalLink({ href, className, children }: { href: string; className?: string; children: ReactNode }) {
   return (
-    <div className={`interface-preview ${sheet ? 'sheet-preview' : ''}`} aria-hidden="true">
-      <div className="app-titlebar">
-        <img src="/brand/openarch-mark-graphite.svg" alt="" />
-        <span>OpenArch BIM</span>
-        <div><i /><i /><i /></div>
+    <a className={className} href={href} target="_blank" rel="noreferrer">
+      {children}
+    </a>
+  )
+}
+
+function Story() {
+  return (
+    <section className="story" id="story">
+      <div className="story-copy">
+        <p className="section-kicker">Why I'm building this</p>
+        <h2>BIM that small practices <em>can afford.</em></h2>
+        <p>
+          I work at a small architecture firm in Australia. The fees for BIM
+          software packages have become extremely expensive, leaving smaller
+          practices unable to afford the fees.
+        </p>
+        <p>
+          I have decided to build OpenArch BIM, a forever free, open-source
+          alternative to the other big BIM programs.
+        </p>
+        <p>
+          I am building it with AI, and I am being thorough, so it is using a
+          lot of usage credits. If you want to help me speed up development,
+          feel free to send me a few dollars to purchase usage credits.
+        </p>
+        <p className="story-sign">Kristian</p>
       </div>
-      <div className="app-toolbar">
-        {['Modify', 'Wall', 'Floor', 'Door', 'Window', 'Roof'].map((item) => <span key={item}>{item}</span>)}
+      <aside className="support-card">
+        <p className="section-kicker">Help it along</p>
+        <h3>A few dollars buys more credits</h3>
+        <p>Usage credits are what speed up development. Anything helps.</p>
+        <ExternalLink className="button button-coffee" href={SUPPORT_URL}>
+          Buy me a coffee <ArrowIcon />
+        </ExternalLink>
+        <ExternalLink className="text-link" href={GITHUB_URL}>
+          Follow along on GitHub <ArrowIcon diagonal />
+        </ExternalLink>
+      </aside>
+    </section>
+  )
+}
+
+function Roadmap() {
+  return (
+    <section className="roadmap" id="roadmap">
+      <div className="roadmap-heading">
+        <p className="section-kicker light">Roadmap</p>
+        <h2>Where it's <em>at.</em></h2>
+        <p>
+          What works today, what I'm building now and what comes after. No
+          dates, just the order I'm working in.
+        </p>
       </div>
-      <div className="app-body">
-        <aside>
-          <b>Project browser</b>
-          <span>⌄ Views</span>
-          <small>Floor Plans</small>
-          <small>Elevations</small>
-          <span>⌄ Families</span>
-          <small>Architecture</small>
-          <small>Structure</small>
-        </aside>
-        <div className="app-canvas">
-          {sheet ? (
-            <div className="drawing-sheet">
-              <div className="plan-drawing"><i /><i /><i /><i /></div>
-              <div className="elevation-drawing"><i /><i /><i /></div>
-              <div className="title-block">A.201 <b>General arrangement</b></div>
-            </div>
-          ) : (
-            <svg className="model-drawing" fill="none" viewBox="0 0 650 390">
-              <path d="m110 286 203 83 248-116-202-78-249 111Z" />
-              <path d="m110 286 3-146 201 75-1 154m46-194 2-145 202 74-2 149M113 140 361 30m-47 185L563 104" />
-              <path d="M156 265v-85l51 19v88m45 19v-90l37 14v91m106-88V91l54 20v97m39-18v-64l47 17v26" />
-              <path className="accent-line" d="m113 140 201 75 249-111" />
-            </svg>
-          )}
-          <span className="view-label">{sheet ? 'Sheet A.201' : '3D View · Coordination'}</span>
+      <div className="roadmap-columns">
+        {roadmap.map((column) => (
+          <article key={column.id} className={`roadmap-column roadmap-${column.id}`}>
+            <header>
+              <span className="roadmap-dot" />
+              <h3>{column.label}</h3>
+              <small>{column.blurb}</small>
+            </header>
+            <ul>
+              {column.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <div className="roadmap-cta">
+        <p>Want it sooner? Every contribution goes towards usage credits.</p>
+        <div>
+          <ExternalLink className="button button-coffee" href={SUPPORT_URL}>
+            Buy me a coffee <ArrowIcon />
+          </ExternalLink>
+          <ExternalLink className="text-link light" href={GITHUB_URL}>
+            View on GitHub <ArrowIcon diagonal />
+          </ExternalLink>
         </div>
-        <aside className="properties-panel">
-          <b>Properties</b>
-          <span>Constraints</span>
-          <small>Level 02</small>
-          <span>Dimensions</span>
-          <small>Area 126.4 m²</small>
-          <span>Identity data</span>
-        </aside>
       </div>
-    </div>
+    </section>
+  )
+}
+
+function Technical() {
+  return (
+    <section className="technical" id="technical">
+      <div className="technical-intro">
+        <p className="section-kicker">Under the hood</p>
+        <h2>Modern tech,<br />no <em>baggage.</em></h2>
+        <p>OpenArch is written from scratch to be fast, private and easy to extend, with no legacy code holding it back.</p>
+      </div>
+      <div className="technical-list">
+        {technicalDetails.map(([number, title, text]) => (
+          <article key={number}>
+            <span>{number}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function Features() {
+  return (
+    <section className="features" id="features">
+      <div className="section-heading">
+        <p className="section-kicker light">{comingSoon ? "What it's aiming for" : 'What it does'}</p>
+        <h2>The tools you<br />actually <em>use.</em></h2>
+        <p>
+          {comingSoon
+            ? 'Familiar BIM tools, with every feature tied to the model so a change in one place updates everywhere. The roadmap below shows what works today.'
+            : 'Familiar BIM tools, with every feature tied to the model so a change in one place updates everywhere.'}
+        </p>
+      </div>
+      <div className="capability-list">
+        {capabilities.map((item) => (
+          <article key={item.number}>
+            <span className="capability-number">{item.number}</span>
+            <div>
+              <CapabilityIcon id={item.number} />
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+            <span className="capability-arrow"><ArrowIcon diagonal /></span>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function Screenshots() {
+  return (
+    <section className="screenshots" id="screenshots">
+      <div className="screenshots-heading">
+        <div>
+          <p className="section-kicker">{comingSoon ? 'Early builds' : 'Screenshots'}</p>
+          <h2>A workspace built<br />for getting <em>work done.</em></h2>
+        </div>
+        <p>
+          {comingSoon
+            ? 'Real screenshots from the current build. It is still early, and it is changing every week.'
+            : 'The tools you need are close at hand and the model stays front and centre.'}
+        </p>
+      </div>
+      {screens.map((screen) => (
+        <div key={screen.src} className={`screen ${screen.className}`}>
+          <img
+            className="screen-img"
+            src={screen.src}
+            width={1602}
+            height={948}
+            alt={screen.alt}
+            loading="lazy"
+          />
+          <div className="screen-caption"><span>{screen.label}</span><p>{screen.text}</p></div>
+        </div>
+      ))}
+    </section>
+  )
+}
+
+function Download() {
+  return (
+    <section className="download" id="download">
+      <div className="download-mark">
+        <img src="/brand/openarch-mark-cloud.svg" alt="" />
+      </div>
+      <p className="section-kicker light">Download</p>
+      <h2>Download it.<br /><em>It's free.</em></h2>
+      <p>Free to use, with no account and no subscription. Pick your platform.</p>
+      <div className="platform-downloads">
+        {[
+          ['Windows', 'Windows 10 or later', 'x64'],
+          ['macOS', 'macOS 13 or later', 'Universal'],
+          ['Linux', 'AppImage', 'x86_64'],
+        ].map(([name, requirement, build]) => (
+          <a href="#release" key={name}>
+            <span className="platform-mark">{name.slice(0, 1)}</span>
+            <div><strong>{name}</strong><small>{requirement}</small></div>
+            <i>{build}</i>
+            <ArrowIcon />
+          </a>
+        ))}
+      </div>
+      <div className="release-info" id="release">
+        <span><i className="status-dot" /> Current release <strong>OpenArch 1.4.0</strong></span>
+        <a href="#roadmap">Release notes <ArrowIcon diagonal /></a>
+        <a href="#roadmap" id="roadmap">View roadmap <ArrowIcon diagonal /></a>
+      </div>
+      <div className="orbit orbit-one" />
+      <div className="orbit orbit-two" />
+    </section>
   )
 }
 
@@ -205,21 +392,38 @@ export default function App() {
         </a>
 
         <nav aria-label="Primary navigation">
-          <a href="#technical">Technical</a>
-          <a href="#features">Features</a>
-          <a href="#screenshots">Screenshots</a>
+          {comingSoon ? (
+            <>
+              <a href="#story">Story</a>
+              <a href="#screenshots">Screenshots</a>
+              <a href="#features">Features</a>
+              <a href="#roadmap">Roadmap</a>
+            </>
+          ) : (
+            <>
+              <a href="#technical">Technical</a>
+              <a href="#features">Features</a>
+              <a href="#screenshots">Screenshots</a>
+            </>
+          )}
         </nav>
 
-        <a className="header-cta" href="#download">
-          Download free <ArrowIcon diagonal />
-        </a>
+        {comingSoon ? (
+          <ExternalLink className="header-cta" href={SUPPORT_URL}>
+            Support the project <ArrowIcon diagonal />
+          </ExternalLink>
+        ) : (
+          <a className="header-cta" href="#download">
+            Download free <ArrowIcon diagonal />
+          </a>
+        )}
       </header>
 
       <section className="hero" id="top">
         <div className="hero-copy">
           <div className="eyebrow reveal">
             <span className="eyebrow-line" />
-            Free and open source BIM
+            {comingSoon ? 'Coming soon · Free and open source' : 'Free and open source BIM'}
           </div>
           <h1 className="reveal reveal-delay-1">
             BIM software,
@@ -227,21 +431,36 @@ export default function App() {
             <em>completely free.</em>
           </h1>
           <p className="hero-intro reveal reveal-delay-2">
-            OpenArch BIM is a free, open source program for designing and
-            documenting buildings. No subscription, no account, and it runs on
-            Windows, macOS and Linux.
+            {comingSoon
+              ? "OpenArch BIM is a free, open source BIM program for designing and documenting buildings, made for the small practices that big software prices out. It's in active development and not ready to download yet."
+              : 'OpenArch BIM is a free, open source program for designing and documenting buildings. No subscription, no account, and it runs on Windows, macOS and Linux.'}
           </p>
           <div className="hero-actions reveal reveal-delay-3">
-            <a className="button button-dark" href="#download">
-              Download for free <ArrowIcon />
-            </a>
-            <a className="text-link" href="#features">
-              See what it can do <ArrowIcon diagonal />
-            </a>
+            {comingSoon ? (
+              <>
+                <ExternalLink className="button button-dark" href={SUPPORT_URL}>
+                  Buy me a coffee <ArrowIcon />
+                </ExternalLink>
+                <ExternalLink className="text-link" href={GITHUB_URL}>
+                  View on GitHub <ArrowIcon diagonal />
+                </ExternalLink>
+              </>
+            ) : (
+              <>
+                <a className="button button-dark" href="#download">
+                  Download for free <ArrowIcon />
+                </a>
+                <a className="text-link" href="#features">
+                  See what it can do <ArrowIcon diagonal />
+                </a>
+              </>
+            )}
           </div>
           <div className="version-note reveal reveal-delay-3">
             <span className="status-dot" />
-            Free · Version 1.4 · Windows, macOS & Linux
+            {comingSoon
+              ? 'In development · Windows and macOS'
+              : 'Free · Version 1.4 · Windows, macOS & Linux'}
           </div>
           <div className="hero-mark" aria-hidden="true">
             <img src="/brand/openarch-mark-graphite.svg" alt="" />
@@ -254,8 +473,17 @@ export default function App() {
             alt="Sculptural concrete facade of a contemporary building"
           />
           <div className="visual-label">
-            <span>Community project</span>
-            <strong>House 07 / Helsinki</strong>
+            {comingSoon ? (
+              <>
+                <span>In development</span>
+                <strong>Early builds shown below</strong>
+              </>
+            ) : (
+              <>
+                <span>Community project</span>
+                <strong>House 07 / Helsinki</strong>
+              </>
+            )}
           </div>
           <div className="drawing-card" aria-hidden="true">
             <span>AX–02</span>
@@ -273,94 +501,22 @@ export default function App() {
         </div>
       </section>
 
-      <section className="technical" id="technical">
-        <div className="technical-intro">
-          <p className="section-kicker">Under the hood</p>
-          <h2>Modern tech,<br />no <em>baggage.</em></h2>
-          <p>OpenArch is written from scratch to be fast, private and easy to extend, with no legacy code holding it back.</p>
-        </div>
-        <div className="technical-list">
-          {technicalDetails.map(([number, title, text]) => (
-            <article key={number}>
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="features" id="features">
-        <div className="section-heading">
-          <p className="section-kicker light">What it does</p>
-          <h2>The tools you<br />actually <em>use.</em></h2>
-          <p>
-            Familiar BIM tools, with every feature tied to the model so a
-            change in one place updates everywhere.
-          </p>
-        </div>
-        <div className="capability-list">
-          {capabilities.map((item) => (
-            <article key={item.number}>
-              <span className="capability-number">{item.number}</span>
-              <div>
-                <CapabilityIcon id={item.number} />
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-              <span className="capability-arrow"><ArrowIcon diagonal /></span>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="screenshots" id="screenshots">
-        <div className="screenshots-heading">
-          <div>
-            <p className="section-kicker">Screenshots</p>
-            <h2>A workspace built<br />for getting <em>work done.</em></h2>
-          </div>
-          <p>The tools you need are close at hand and the model stays front and centre.</p>
-        </div>
-        <div className="screen screen-primary">
-          <InterfacePreview />
-          <div className="screen-caption"><span>01 / 3D modelling</span><p>Model, inspect and edit building elements in one view.</p></div>
-        </div>
-        <div className="screen screen-secondary">
-          <InterfacePreview sheet />
-          <div className="screen-caption"><span>02 / Documentation</span><p>Build sheets straight from live project views.</p></div>
-        </div>
-      </section>
-
-      <section className="download" id="download">
-        <div className="download-mark">
-          <img src="/brand/openarch-mark-cloud.svg" alt="" />
-        </div>
-        <p className="section-kicker light">Download</p>
-        <h2>Download it.<br /><em>It's free.</em></h2>
-        <p>Free to use, with no account and no subscription. Pick your platform.</p>
-        <div className="platform-downloads">
-          {[
-            ['Windows', 'Windows 10 or later', 'x64'],
-            ['macOS', 'macOS 13 or later', 'Universal'],
-            ['Linux', 'AppImage', 'x86_64'],
-          ].map(([name, requirement, build]) => (
-            <a href="#release" key={name}>
-              <span className="platform-mark">{name.slice(0, 1)}</span>
-              <div><strong>{name}</strong><small>{requirement}</small></div>
-              <i>{build}</i>
-              <ArrowIcon />
-            </a>
-          ))}
-        </div>
-        <div className="release-info" id="release">
-          <span><i className="status-dot" /> Current release <strong>OpenArch 1.4.0</strong></span>
-          <a href="#roadmap">Release notes <ArrowIcon diagonal /></a>
-          <a href="#roadmap" id="roadmap">View roadmap <ArrowIcon diagonal /></a>
-        </div>
-        <div className="orbit orbit-one" />
-        <div className="orbit orbit-two" />
-      </section>
+      {comingSoon ? (
+        <>
+          <Story />
+          <Screenshots />
+          <Features />
+          <Technical />
+          <Roadmap />
+        </>
+      ) : (
+        <>
+          <Technical />
+          <Features />
+          <Screenshots />
+          <Download />
+        </>
+      )}
 
       <footer>
         <a className="brand footer-brand" href="#top" aria-label="OpenArch BIM home">
@@ -368,15 +524,26 @@ export default function App() {
         </a>
         <p>Free, open source BIM software.</p>
         <div className="footer-links">
-          <a href="#features">Features</a>
-          <a href="#technical">Technical</a>
-          <a href="#screenshots">Screenshots</a>
-          <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          {comingSoon ? (
+            <>
+              <a href="#story">Story</a>
+              <a href="#roadmap">Roadmap</a>
+              <ExternalLink href={GITHUB_URL}>GitHub</ExternalLink>
+              <ExternalLink href={SUPPORT_URL}>Support</ExternalLink>
+            </>
+          ) : (
+            <>
+              <a href="#features">Features</a>
+              <a href="#technical">Technical</a>
+              <a href="#screenshots">Screenshots</a>
+              <ExternalLink href={GITHUB_URL}>GitHub</ExternalLink>
+            </>
+          )}
           <a href="#top">Back to top ↑</a>
         </div>
         <div className="footer-bottom">
           <span>© 2026 OpenArch BIM</span>
-          <span>Released under GNU GPL v3.0</span>
+          <span>{comingSoon ? 'Free and open source' : 'Released under GNU GPL v3.0'}</span>
           <span>
             Photography via{' '}
             <a href="https://unsplash.com" target="_blank" rel="noreferrer">Unsplash</a>
