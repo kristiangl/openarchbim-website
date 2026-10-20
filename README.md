@@ -23,9 +23,7 @@ Optional secret or variable `FTP_DIR`: target folder on the host (default `publi
 
 ## Pre-launch checklist
 
-- Remove the password gate: set `GATE_ENABLED = false` in `src/Gate.tsx`.
-- Allow indexing: delete the `robots` meta tag in `index.html` and `public/robots.txt`.
-- Replace placeholder screenshots, release/download/roadmap links and the GitHub link.
+- When launching, set `SITE_MODE` to `'launch'` and replace the placeholder download links.
 - Add the photographer's name to the Unsplash credit in the footer.
 
 ## Site mode

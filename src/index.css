@@ -1280,55 +1280,6 @@ footer > p {
   .button { transition: none; }
 }
 
-/* Access gate (temporary, pre-launch) */
-.gate {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  background: var(--cream);
-}
-
-.gate form {
-  width: min(360px, 100%);
-  display: grid;
-  gap: 14px;
-}
-
-.gate img {
-  width: 180px;
-  margin-bottom: 14px;
-}
-
-.gate label {
-  font: 12px 'DM Mono', monospace;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.gate input {
-  font: 16px 'DM Sans', sans-serif;
-  padding: 13px 14px;
-  border: 1px solid rgb(26 26 26 / 40%);
-  background: transparent;
-  color: var(--ink);
-}
-
-.gate button {
-  font: 500 15px 'DM Sans', sans-serif;
-  padding: 13px 14px;
-  border: 0;
-  background: var(--ink);
-  color: var(--cream);
-  cursor: pointer;
-}
-
-.gate-error {
-  margin: 0;
-  font-size: 13px;
-  color: #b3403e;
-}
-
 /* Motion (all of it is disabled under prefers-reduced-motion below) */
 .status-dot {
   position: relative;
