@@ -44,6 +44,9 @@ export const roadmap = [
       'Site tools: toposurface, building pads, cut and fill',
       'A converter for projects from other BIM software',
       'Sun path, shadows and render export',
+      'Worksharing, so a team can work on one model together',
+      'Structural tools: framing, foundations and structural models',
+      'MEP tools: mechanical, electrical and plumbing systems',
     ],
   },
 ]
