@@ -459,7 +459,7 @@ export default function App() {
           <div className="version-note reveal reveal-delay-3">
             <span className="status-dot" />
             {comingSoon
-              ? 'In development · Windows and macOS'
+              ? 'In development · Windows, macOS and Linux'
               : 'Free · Version 1.4 · Windows, macOS & Linux'}
           </div>
           <div className="hero-mark" aria-hidden="true">

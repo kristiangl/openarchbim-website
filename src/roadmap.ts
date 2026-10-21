@@ -28,7 +28,7 @@ export const roadmap = [
       'Roof soffits, fascias and gutters',
       'Dimensions and spot levels in elevation and section views',
       'Door and window tags',
-      'Mac testing and proper installers',
+      'Mac and Linux testing, and proper installers',
     ],
   },
   {
