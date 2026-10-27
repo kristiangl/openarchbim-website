@@ -1828,3 +1828,54 @@ footer > p {
     align-items: flex-start;
   }
 }
+
+.project-card {
+  align-items: center;
+}
+
+.project-logo {
+  flex: none;
+  width: 150px;
+  height: auto;
+}
+
+.project-card > div {
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .project-card {
+    align-items: flex-start;
+  }
+
+  .project-logo {
+    width: 130px;
+  }
+}
+
+.project-card h3 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.other-projects {
+  grid-template-columns: .8fr 1.6fr;
+}
+
+.project-logo {
+  width: 170px;
+}
+
+@media (max-width: 900px) {
+  .other-projects {
+    grid-template-columns: 1fr;
+  }
+
+  .project-logo {
+    width: 130px;
+  }
+}

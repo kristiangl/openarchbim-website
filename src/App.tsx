@@ -390,6 +390,7 @@ function OtherProjects() {
         <h2>Also from <em>OpenArch.</em></h2>
       </div>
       <article className="project-card">
+        <img className="project-logo" src="/brand/openarchsp-logo.svg" alt="" width={1488} height={751} />
         <div>
           <h3>OpenArchSP</h3>
           <p>
