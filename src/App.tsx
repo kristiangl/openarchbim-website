@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { useMotion } from './motion'
-import { GITHUB_URL, SITE_MODE, SUPPORT_URL } from './config'
+import { GITHUB_URL, SITE_MODE, SUPPORT_URL, SWEPT_PATH_URL } from './config'
 import { roadmap } from './roadmap'
 
 const heroImage =
@@ -382,6 +382,30 @@ function Download() {
   )
 }
 
+function OtherProjects() {
+  return (
+    <section className="other-projects" id="projects">
+      <div className="other-projects-heading">
+        <p className="section-kicker">Other OpenArch projects</p>
+        <h2>Also from <em>OpenArch.</em></h2>
+      </div>
+      <article className="project-card">
+        <div>
+          <h3>OpenArchSP</h3>
+          <p>
+            A simple vehicle swept path analysis tool. Open a DWG or DXF,
+            run your swept paths, then save a new DXF drawing or export just
+            the swept paths as a DXF block.
+          </p>
+        </div>
+        <ExternalLink className="text-link" href={SWEPT_PATH_URL}>
+          View on GitHub <ArrowIcon diagonal />
+        </ExternalLink>
+      </article>
+    </section>
+  )
+}
+
 export default function App() {
   useMotion()
   return (
@@ -517,6 +541,8 @@ export default function App() {
           <Download />
         </>
       )}
+
+      <OtherProjects />
 
       <footer>
         <a className="brand footer-brand" href="#top" aria-label="OpenArch BIM home">

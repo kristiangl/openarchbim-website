@@ -11,6 +11,7 @@ const REVEAL_SELECTORS = [
   '.screen',
   '.story-copy, .support-card',
   '.roadmap-heading, .roadmap-column, .roadmap-cta',
+  '.other-projects-heading, .project-card',
   '.download-mark, .download > p, .download h2, .platform-downloads a, .release-info',
 ]
 

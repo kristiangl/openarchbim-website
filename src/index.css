@@ -1752,3 +1752,79 @@ footer > p {
 .story-copy .section-kicker {
   margin-bottom: 22px;
 }
+
+/* ---------- Other projects ---------- */
+
+.other-projects {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 8vw;
+  align-items: center;
+  padding: 90px max(24px, 8vw);
+  background: var(--cream);
+}
+
+.other-projects-heading .section-kicker {
+  margin-bottom: 18px;
+}
+
+.other-projects-heading h2 {
+  margin: 0;
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: clamp(36px, 3.6vw, 56px);
+  line-height: 1.05;
+}
+
+.other-projects-heading h2 em {
+  font-style: italic;
+  color: var(--sage);
+}
+
+.project-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  padding: 32px 34px;
+  color: var(--ink);
+  border: 1px solid rgb(26 26 26 / 25%);
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+
+.project-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.project-card h3 {
+  margin: 0 0 10px;
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: 34px;
+}
+
+.project-card p {
+  max-width: 520px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.project-card .text-link {
+  flex: none;
+}
+
+@media (max-width: 900px) {
+  .other-projects {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 70px 24px;
+  }
+
+  .project-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -7,3 +7,4 @@ export const SITE_MODE: SiteMode = 'coming-soon'
 
 export const GITHUB_URL = 'https://github.com/kristiangl/OpenArchBIM'
 export const SUPPORT_URL = 'https://buymeacoffee.com/kristianl'
+export const SWEPT_PATH_URL = 'https://github.com/kristiangl/OpenArchSP'
